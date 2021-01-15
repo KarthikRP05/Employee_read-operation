@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Table Read Operation</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+</head>
+<body>
+  <!--Department Table-->
+  <div class="container">
+    <br><h3>DEPARTMENT TABLE</h3></br>  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Department ID</th>
+          <th>Department Name</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for dept in department %}  
+        <tr>
+          <td>{{dept.dept_id}}</td>
+          <td>{{dept.dept_name}}</td>
+        </tr>
+    {% endfor %} 
+    </tbody>
+  </table>
+  </div>
+  <!--Employee Table-->
+  <div class="container">
+    <br><h3>EMPLOYEE TABLE</h3></br>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Employee Department</th>
+          <th>Employee DOB</th>
+          <th>Department ID</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for emp in employee %}  
+        <tr>
+          <td>{{emp.emp_id}}</td>
+          <td>{{emp.emp_name}}</td>
+          <td>{{emp.emp_dept}}</td>
+          <td>{{emp.emp_dob}}</td>
+          <td>{{emp.dept_id.dept_id}}</td>
+        </tr>
+    {% endfor %} 
+    </tbody>
+  </table>
+  </div>
+<!--Salary Table-->
+<div class="container">
+  <br><h3>SALARY TABLE</h3></br>  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Salary ID</th>
+        <th>Employee ID</th>
+        <th>Department Name</th>
+        <th>Net Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for sal in salary %}  
+      <tr>
+        <td>{{sal.sal_id}}</td>
+        <td>{{sal.emp_id.emp_id}}</td>
+        <td>{{sal.dept_name.dept_name}}</td>
+        <td>{{sal.sal_net}}</td>
+      </tr>
+  {% endfor %} 
+  </tbody>
+</table>
+</div>
+<!--Count Table-->
+<div class="container">
+  <br><h3>TOTAL COUNT IN EMP ID</h3></br>  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Department Name</th>
+        <th>Employee ID Count</th>
+      </tr>
+    </thead>
+    <tbody>
+ <!--{% with dept_count as total_comments %}
+         <h2>
+           {{ total_comments }} comment{{ total_comments|pluralize }}
+         </h2>
+ {% endwith %}-->
+ {% for dc in dept_count %}
+    <tr>
+      <td>{{dc.dept_id__dept_name}}</td>
+      <td>{{dc.total}}</td>
+    </tr>
+ {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <style>
+    h3 {
+        text-align: left;
+        color: #f20000;}
+    table, td, th { 
+    border: 1px solid #ddd; 
+    text-align: left;
+    padding: 15px;} 
+   </style>	
+</body>
+</html>
+
+
